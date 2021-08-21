@@ -1,4 +1,31 @@
 <div class="container mt-4">
+  <div class="edit-model" [ngClass]="{ active: flagEditSignal }">
+    <form #editForm="ngForm" (ngSubmit)="editFormData(editForm)">
+      <input
+        type="text"
+        class="form-control"
+        value="{{ getEditData.title }}"
+        placeholder="Title"
+        ngModel
+        name="title"
+      />
+      <input
+        type="text"
+        class="form-control mt-2"
+        value="{{ getEditData.author }}"
+        placeholder="Author"
+        ngModel
+        name="author"
+      />
+      <button class="btn btn-warning mt-2" (click)="flagEditClose()">
+        Close
+      </button>
+      <button type="submit"
+       class="btn btn-success mt-2 ml-2"
+       [disabled]="editForm.value.title==='' || editForm.value.author===''"
+       >Save</button>
+    </form>
+  </div>
   <div class="row">
     <div class="col-12 col-md-3"></div>
     <div class="col-12 col-md-6">
@@ -30,7 +57,9 @@
                 type="submit"
                 name="submitTask"
                 class="mt-2 btn btn-lg form-control"
-                [disabled]="myform.value.title==='' || myform.value.author===''"
+                [disabled]="
+                  myform.value.title === '' || myform.value.author === ''
+                "
               >
                 Add
               </button>
@@ -43,9 +72,13 @@
         class="mt-2"
         style="max-height: 450px; overflow-x: hidden; overflow-y: scroll"
       >
-      
         <div class="card mt-2">
-          <h3 class="form-control " style="text-align: center;font-size: 22px;font-weight: bolder;">All Story</h3>
+          <h3
+            class="form-control"
+            style="text-align: center; font-size: 22px; font-weight: bolder"
+          >
+            All Story
+          </h3>
           <div class="card-body bg-defualt" *ngFor="let data of getData">
             <div class="card-title">
               <h4>{{ data.title }}</h4>
@@ -55,9 +88,21 @@
             </div>
 
             <div class="card-footer">
-              <button class="btn btn-warning">Edit</button>
+              <button
+                class="btn btn-warning"
+                (click)="flagEdit($event)"
+                id="{{ data.id }}"
+              >
+                Edit
+              </button>
 
-              <button class="btn btn-danger ml-2" (click)="delTask($event)" id="{{data.id}}">Delete</button>
+              <button
+                class="btn btn-danger ml-2"
+                (click)="delTask($event)"
+                id="{{ data.id }}"
+              >
+                Delete
+              </button>
             </div>
           </div>
         </div>

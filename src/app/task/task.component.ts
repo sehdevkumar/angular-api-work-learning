@@ -68,6 +68,44 @@ export class TaskComponent implements OnInit {
        })
     }
 
+   flagEditSignal = false;
    
+   getEditData:tasks={id:'',title:'',author:''};
+  
 
-}
+   flagEdit(id:Event){
+     this.flagEditSignal = true
+     let ids:string = (<HTMLButtonElement>id.target).id
+     
+     this.service.getPostById(ids)
+     .subscribe(res=>{
+        this.getEditData = res;
+        
+     },err=>{
+       alert("can't Fetch")
+     })
+
+     
+   }
+   flagEditClose(){
+     this.flagEditSignal = false
+   }
+
+   editFormData(editFrom:NgForm){
+         
+      this.service.postEditData(editFrom.value,this.getEditData.id)
+      .subscribe(res=>{
+          alert("Updated!")
+           this.service.getData()
+            .subscribe(res=>{
+            this.getData = res
+            },err=>{
+            alert("can't fetch data!")
+            })
+             this.flagEditSignal = false
+      },err=>{
+        alert("Not Updated!")
+      })
+
+   }
+}  

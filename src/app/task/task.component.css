@@ -1,0 +1,25 @@
+.edit-model{
+    width: 600px;
+    height: 200px;
+    border: 1px solid rgba(0,0,0,0.3);
+    position: absolute;
+    z-index: 100;
+    background: #FFFFFF;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 0;
+    box-sizing: border-box;
+    box-shadow: -3px 1px 6px 2px rgba(0,0,0,0.2);
+    border-radius: .4rem;
+    padding: 7px;
+    opacity: 0px;
+    visibility: hidden;
+    z-index: -100;
+    transition: all .20s ease-out;
+
+}.edit-model.active{
+    opacity: 1px;
+    visibility: visible;
+    z-index: 100;
+    top:50%;
+}

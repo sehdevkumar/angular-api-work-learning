@@ -33,4 +33,21 @@ export class TasksService {
         return res;
       }))
   }
+
+  getPostById(id:string){
+      return this.http.get<tasks>(`http://localhost:3000/posts/${id}`)
+      .pipe(map(res=>{
+        return res;
+      }))
+  }
+
+  postEditData(post:tasks,id:string){
+
+      return this.http.put<tasks>(`http://localhost:3000/posts/${id}`,post)
+      .pipe(map(res=>{
+        return res;
+      }))
+
+
+  }
 }
