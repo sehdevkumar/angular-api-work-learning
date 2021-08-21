@@ -89,6 +89,7 @@ export class TaskComponent implements OnInit {
    }
    flagEditClose(){
      this.flagEditSignal = false
+     return;
    }
 
    editFormData(editFrom:NgForm){
@@ -96,13 +97,14 @@ export class TaskComponent implements OnInit {
       this.service.postEditData(editFrom.value,this.getEditData.id)
       .subscribe(res=>{
           alert("Updated!")
+           this.flagEditSignal = false
            this.service.getData()
             .subscribe(res=>{
             this.getData = res
             },err=>{
             alert("can't fetch data!")
             })
-             this.flagEditSignal = false
+            
       },err=>{
         alert("Not Updated!")
       })

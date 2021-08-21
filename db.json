@@ -1,14 +1,9 @@
 {
   "posts": [
     {
-      "title": "The Social Network ",
+      "title": "The Social Network",
       "author": "Mr David Fincher ",
       "id": 3
-    },
-    {
-      "title": "The War",
-      "author": "Mr Jhon",
-      "id": 4
     }
   ],
   "comments": [],
