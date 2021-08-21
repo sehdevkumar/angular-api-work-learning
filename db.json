@@ -1,11 +1,5 @@
 {
-  "posts": [
-    {
-      "title": "The Social Network",
-      "author": "Mr David Fincher ",
-      "id": 3
-    }
-  ],
+  "posts": [],
   "comments": [],
   "profile": {
     "name": "typicode"
